@@ -1,54 +1,40 @@
 import React from 'react';
+import axios from 'axios';
 
 class Blog extends React.Component{
+  constructor(){
+    super();
+    this.state = {
+      page: 1,
+      data: []
+    }
+  }
+  componentDidMount(){
+    axios.get(`https://cnodejs.org/api/v1/topics?page=${this.state.page}&limit=5`)
+      .then( res => this.setState({data:res.data.data}) )
+  }
+  handleCLick(nowPage){
+    axios.get(`https://cnodejs.org/api/v1/topics?page=${nowPage+1}&limit=5`)
+    .then( res => this.setState({
+      data:[...this.state.data,...res.data.data],
+      page: nowPage+1
+    }) )
+
+  }
   render(){
+    console.log(this.state.data);
     return(
       <div className="jumbotron">
-        <p>About</p>
-        <div className="row">
-          <div className="col-sm-6 col-md-4 col-xs-12">
-            <div className="thumbnail">
-              <h2>A</h2>
-              <div className="caption">
-                <h3>Thumbnail label</h3>
-                <p>...</p>
-                <p>
-                  <a href="#" className="btn btn-primary" role="button">Button</a>
-                  <a href="#" className="btn btn-default" role="button">Button</a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col-sm-6 col-md-4 col-xs-12">
-            <div className="thumbnail">
-              <h2>A</h2>
-              <div className="caption">
-                <h3>Thumbnail label</h3>
-                <p>...</p>
-                <p>
-                  <a href="#" className="btn btn-primary" role="button">Button</a>
-                  <a href="#" className="btn btn-default" role="button">Button</a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col-sm-6 col-md-4 col-xs-12">
-            <div className="thumbnail">
-              <h2>A</h2>
-              <div className="caption">
-                <h3>Thumbnail label</h3>
-                <p>...</p>
-                <p>
-                  <a href="#" className="btn btn-primary" role="button">Button</a>
-                  <a href="#" className="btn btn-default" role="button">Button</a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        {
+          this.state.data.map( item =>
+            <p key={Math.random()}>{item.title}</p>
+          )
+        }
+        <button type="button" className="btn btn-info" onClick={this.handleCLick.bind(this,this.state.page)}>More</button>
       </div>
     )
   }
 }
+
 
 export default Blog;

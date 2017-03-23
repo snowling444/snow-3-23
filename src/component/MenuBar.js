@@ -13,7 +13,7 @@ class MenuBar extends React.Component{
             <Link to="/blog" activeStyle={{color: '#A42D00'}}>Blog</Link>
           </li>
           <li role="presentation">
-            <Link to="/contact" activeStyle={{color: '#A42D00'}}>Contact</Link>
+            <Link to="/mine" activeStyle={{color: '#A42D00'}}>Mine</Link>
           </li>
         </ul>
       </div>

@@ -3,8 +3,8 @@ import { Router, Route, browserHistory,IndexRoute } from 'react-router';
 
 import Home from './Home';
 import Blog from './Blog';
-import Contact from './Contact';
 import App from './App';
+import Mine from './Mine';
 
 class Routes extends React.Component {
   render(){
@@ -13,7 +13,7 @@ class Routes extends React.Component {
         <Route path="/" component={Home} >
           <IndexRoute component={App}/>
           <Route path="blog" component={Blog} />
-          <Route path="contact" component={Contact} />
+          <Route path="mine" component={Mine} />
         </Route>
       </Router>
     );
