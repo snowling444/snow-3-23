@@ -27,7 +27,7 @@ class Blog extends React.Component{
       <div className="jumbotron">
         {
           this.state.data.map( item =>
-            <p key={Math.random()}>{item.title}</p>
+            <h5 key={Math.random()}>{item.title}</h5>
           )
         }
         <button type="button" className="btn btn-info" onClick={this.handleCLick.bind(this,this.state.page)}>More</button>

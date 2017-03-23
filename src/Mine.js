@@ -8,7 +8,8 @@ class Mine extends React.Component{
     super();
     this.state={
       data:{},
-      wait:true
+      wait:true,
+      num:5
     }
   }
   componentDidMount(){
