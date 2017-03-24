@@ -6,6 +6,7 @@ class Card extends React.Component {
       <div className='clearfix'>
         <h3>{this.props.title}</h3>
         <p>{this.props.desc}</p>
+        <a className="btn btn-default" href={`#/item/${this.props.url}`} role="button">查看</a>
       </div>
     )
   }
@@ -14,7 +15,7 @@ class Card extends React.Component {
 Card.defaultProps={
   index:1,
   title:'Today',
-  desc:'不是很开心'
+  desc:'开心'
 }
 Card.propTypes={
   index:React.PropTypes.number,
